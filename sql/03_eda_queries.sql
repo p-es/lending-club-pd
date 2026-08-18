@@ -17,7 +17,7 @@ FROM cohort
 GROUP BY vintage
 ORDER BY vintage;
 
--- Default rate by LendingClub grade (the benchmark your model must justify itself against)
+
 SELECT grade,
        count(*) AS n_loans,
        round(avg(default_flag) * 100, 2) AS default_rate_pct
