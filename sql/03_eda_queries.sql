@@ -8,3 +8,19 @@ SELECT min(strptime(issue_d, '%b-%Y')) AS first_loan,
 FROM raw_accepted;
 
 SUMMARIZE raw_accepted;
+
+
+SELECT date_trunc('quarter', issue_date) AS vintage,
+       count(*) AS n_loans,
+       round(avg(default_flag) * 100, 2) AS default_rate_pct
+FROM cohort
+GROUP BY vintage
+ORDER BY vintage;
+
+-- Default rate by LendingClub grade (the benchmark your model must justify itself against)
+SELECT grade,
+       count(*) AS n_loans,
+       round(avg(default_flag) * 100, 2) AS default_rate_pct
+FROM cohort
+GROUP BY grade
+ORDER BY grade;
