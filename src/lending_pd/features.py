@@ -46,3 +46,12 @@ def encode_state(df: pd.DataFrame, top_n: int = 10) -> pd.DataFrame:
     top = out["addr_state"].value_counts().nlargest(top_n).index
     out["state_grp"] = out["addr_state"].where(out["addr_state"].isin(top), "Other")
     return pd.get_dummies(out, columns=["state_grp"], prefix="state")
+
+def fit_caps(train_df: pd.DataFrame) -> dict:
+    """Winsorisation caps, fitted on TRAINING data only to avoid using
+    test-period information."""
+    return {
+        "annual_inc": (train_df["annual_inc"].quantile(0.995),
+                       train_df["annual_inc"].quantile(0.005)),
+        "revol_util": (0.0, 120.0)
+    }
