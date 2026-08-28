@@ -3,7 +3,15 @@ LEAKY_COLUMNS = [
 ]
 
 # Model A: borrower raw attributes only, no leakage.
-MODEL_A_FEATURES = ["loan_amnt", "installment", "emp_length", "home_ownership", "annual_inc", "verification_status", "purpose", "addr_state", "dti", "delinq_2yrs", "earliest_cr_line", "fico_range_low", "fico_range_high", "inq_last_6mths", "mths_since_last_delinq", "mths_since_last_record","open_acc", "pub_rec", "revol_bal", "revol_util", "total_acc","collections_12_mths_ex_med", "mths_since_last_major_derog", "acc_now_delinq", "tot_coll_amnt", "tot_cur_bal", "total_rev_hi_lim", "acc_open_past_24mths", "avg_cur_bal", "bc_open_to_buy", "bc_util", "chargeoff_within_12_mths", "delinq_amnt", "mo_sin_old_il_acct", "mo_sin_old_rev_tl_op", "mo_sin_rcnt_rev_tl_op", "mo_sin_rcnt_tl", "mort_acc", "mths_since_recent_bc", "mths_since_recent_bc_dlq", "mths_since_recent_inq", "mths_since_recent_revol_delinq", "num_accts_ever_120_pd", "num_actv_bc_tl", "num_actv_rev_tl", "num_bc_sats", "num_bc_tl", "num_il_tl", "num_op_rev_tl", "num_rev_accts", "num_rev_tl_bal_gt_0", "num_sats", "num_tl_120dpd_2m", "num_tl_30dpd", "num_tl_90g_dpd_24m", "num_tl_op_past_12m", "pct_tl_nvr_dlq", "percent_bc_gt_75","pub_rec_bankruptcies","tax_liens","tot_hi_cred_lim","total_bal_ex_mort","total_bc_limit","total_il_high_credit_limit"
+MODEL_A_FEATURES = [
+    "loan_amnt", "annual_inc", "dti",
+    "fico_mid", "revol_util", "revol_bal", "open_acc", "total_acc",
+    "inq_last_6mths", "delinq_2yrs", "pub_rec", "pub_rec_bankruptcies",
+    "mths_since_last_delinq",
+    "emp_length_yrs", "emp_length_missing",
+    "loan_to_income", "revol_bal_to_income",
+    "credit_hist_yrs",
+    "purpose", "home_ownership", "verification_status",
 ]
 # Model B: adds the platform's own pricing.
 MODEL_B_EXTRA = ["int_rate", "grade", "sub_grade"
