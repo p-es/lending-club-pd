@@ -1,0 +1,27 @@
+[
+  {
+    "model": "benchmark_int_rate_alone",
+    "roc_auc": 0.6773,
+    "pr_auc": 0.2503,
+    "observed_default_rate": 0.1492,
+    "n_test": 194357
+  },
+  {
+    "model": "logistic_A",
+    "roc_auc": 0.6591,
+    "pr_auc": 0.2386,
+    "observed_default_rate": 0.1492,
+    "n_test": 194357,
+    "brier": 0.1222,
+    "mean_predicted_pd": 0.1347
+  },
+  {
+    "model": "logistic_B",
+    "roc_auc": 0.6886,
+    "pr_auc": 0.26,
+    "observed_default_rate": 0.1492,
+    "n_test": 194357,
+    "brier": 0.1202,
+    "mean_predicted_pd": 0.1348
+  }
+]

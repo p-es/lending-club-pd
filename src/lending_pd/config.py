@@ -14,7 +14,7 @@ MODEL_A_FEATURES = [
     "purpose", "home_ownership", "verification_status",
 ]
 # Model B: adds the platform's own pricing.
-MODEL_B_EXTRA = ["int_rate", "grade", "sub_grade"
+MODEL_B_EXTRA = ["int_rate", "sub_grade"
 ]
 
 #Week 3
