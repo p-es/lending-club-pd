@@ -1,6 +1,6 @@
 import duckdb
 import pytest
-from lending_pd.config import (LEAKY_COLUMNS, MODEL_A_FEATURES, MODEL_B_EXTRA)
+from lending_pd.config import (CATEGORICAL_FEATURES, LEAKY_COLUMNS, MODEL_A_FEATURES, MODEL_B_EXTRA)
 
 
 DB = "data/processed/lending.duckdb"
@@ -23,3 +23,15 @@ def test_cohort_is_36_month_matured_window():
     lo, hi = con.execute(
         "SELECT min(issue_date), max(issue_date) FROM cohort").fetchone()
     assert str(lo) >= "2012-01-01" and str(hi) <= "2015-09-30"
+
+
+from lending_pd.config import TRAIN_END
+
+def test_split_boundary_inside_cohort_window():
+    assert "2012-01-01" < TRAIN_END < "2015-09-30"
+
+def test_categoricals_not_double_counted():
+    """Check that the categorical features are not also included in the model features."""
+    from lending_pd.config import MODEL_A_FEATURES, CATEGORICAL_FEATURES
+    assert "addr_state" not in MODEL_A_FEATURES, "addr_state should not be in model features"
+    assert "state_grp" not in MODEL_A_FEATURES, "state_grp should not be in model features"

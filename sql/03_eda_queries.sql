@@ -64,5 +64,12 @@ SELECT sub_grade, avg(int_rate) AS avg_int_rate,
                      avg(default_flag)*100 AS default_pct, count(*) AS n
               FROM cohort GROUP BY 1 ORDER BY 1;
 
-
+SELECT 
+    CASE WHEN issue_date <= DATE '2014-12-31' THEN 'train' ELSE 'test' AND AS split,
+    COUNT(*) AS n,
+    round(avg(default_flag)*100, 2) AS default_pct,
+    min(issue_date) AS first, max(issue_date) AS last
+    FROM cohort GROUP BY 1 ORDER BY 1 DESC;
+#train: n = 306462, default_pct = 13.25
+#test: n = 194357, default_pct = 14.92
 

@@ -16,3 +16,20 @@ MODEL_A_FEATURES = [
 # Model B: adds the platform's own pricing.
 MODEL_B_EXTRA = ["int_rate", "grade", "sub_grade"
 ]
+
+#Week 3
+
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+DB_PATH = ROOT / "data" / "processed" / "lending.duckdb"
+
+# Out-of-time split: train 2012Q1-2014Q4, test 2015Q1-2015Q3
+# Random split model would see test perod regime, see 02_eda fig 1.
+
+TRAIN_END = "2014-12-31"
+
+CATEGORICAL_FEATURES = [
+    "purpose", "home_ownership", "verification_status", "state_grp"
+]
+
