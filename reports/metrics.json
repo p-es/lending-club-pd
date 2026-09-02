@@ -23,5 +23,23 @@
     "n_test": 194357,
     "brier": 0.1202,
     "mean_predicted_pd": 0.1348
+  },
+  {
+    "model": "lgbm_A",
+    "roc_auc": 0.6681,
+    "pr_auc": 0.2467,
+    "observed_default_rate": 0.1492,
+    "n_test": 194357,
+    "brier": 0.1217,
+    "mean_predicted_pd": 0.131
+  },
+  {
+    "model": "lgbm_B",
+    "roc_auc": 0.689,
+    "pr_auc": 0.2644,
+    "observed_default_rate": 0.1492,
+    "n_test": 194357,
+    "brier": 0.1204,
+    "mean_predicted_pd": 0.1251
   }
 ]
