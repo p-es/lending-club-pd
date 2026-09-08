@@ -18,7 +18,7 @@ Out-of-time test set: 194,357 loans issued 2015 Q1–Q3, observed default rate 1
 
 **1. Borrower attributes alone underperform the platform's pricing.** The attribute-only logistic reaches 0.659 against 0.677 for LendingClub's interest rate used as a raw score. This is the expected direction: `int_rate` is the output of LendingClub's own underwriting model which consumed these attributes plus application and bureau data not present in this dataset. The comparison measures how much of that pricing signal is recoverable from public origination fields.
 
-**1. Attributes add signal on top of pricing.** Both B models beat the benchmark (0.689 vs 0.677), so the two information sources are not fully redundant.
+**2. Attributes add signal on top of pricing.** Both B models beat the benchmark (0.689 vs 0.677), so the two information sources are not fully redundant.
 
 **3. Non-linearity matters only where the features are raw.** LightGBM lifts the attribute-only model from 0.659 to 0.668 or halving the gap to the benchmark but adds nothing once pricing is included (0.6890 vs 0.6886). Grade and interest rate are already the output of a model and encode the non-linearities a tree would otherwise have to learn.
 
