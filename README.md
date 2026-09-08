@@ -48,7 +48,7 @@ Supporting Results:
 
 ## Leakage
 
-[`reports/leakage_audit.csv`](reports/leakage_audit.csv) classifies all 153 columns by when their value becomes known (38 are post-origination, 30 are empty in this cohort and the rest are origination-time, administrative, target or metadata) with a one-line rationale for each row. 
+[`reports/leakage_audit.csv`](reports/leakage_audit.csv) classifies all 153 columns by when their value becomes known (38 are post-origination, 30 are empty in this cohort and the rest are origination-time, administrative, target or metadata) with a one-line rationale for troublesome rows. 
 The banned set is enforced in ([`config.py`](src/lending_pd/config.py)) and asserted by [`tests/test_no_leakage.py`](tests/test_no_leakage.py) so a given model can't acquire one.
 
 [`notebooks/99_leakage_exhibit.ipynb`](notebooks/99_leakage_exhibit.ipynb) shows we avoided leakage: training on 21 post-origination numeric columns gives AUC 1.00. For a matured loan `total_rec_prncp` is approximately the loan amount if and only if it was repaid while `recoveries` is positive only if it was not repaid. By comparison the models in this repo reach only AUC 0.689.
