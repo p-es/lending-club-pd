@@ -1,6 +1,6 @@
-# Predicting loan defaults, and whether the predictions would have made money
+# Predicting loan defaults and whether the predictions would have made money
 
-Can publicly available origination attributes predict which LendingClub loans default and would acting on those predictions have improved returns? This project builds probability-of-default models on 500,819 matured 36-month loans issued between 2012 Q1 and 2015 Q3, validates them out-of-time on 2015 originations and then evaluates the predictions economically against realised loan cash flows. Data leakage was especially targeted: each of the 153 columns is classified by whether it is known at origination, the banned set is enforced by tests and a deliberate leakage exhibit shows what including those columns does (AUC 1.00). The models reach a modest AUC 0.659–0.689 against the platform's own interest rate at 0.677.
+Can publicly available origination attributes predict which LendingClub loans default and would acting on those predictions have improved returns? This project builds probability-of-default models on 500,819 matured 36-month loans issued between 2012 Q1 and 2015 Q3, validates them out-of-time on 2015 originations and then evaluates the predictions economically against realised loan cash flows. Data leakage was especially targeted: each of the 153 columns is classified by whether it is known at origination, the banned set is enforced by tests and a leakage exhibit shows what including those columns does (AUC 1.00). The models reach a modest AUC 0.659–0.689 against the platform's own interest rate at 0.677.
 
 ## Results
 
@@ -71,7 +71,7 @@ Analysis notebooks: [EDA](notebooks/02_eda.ipynb) · [modelling](notebooks/03_mo
 
 - **Funded loans only:** LendingClub's rejected applications are not in this cohort so nothing here can be read as beating their underwriting, only as re-ranking loans they chose to fund.
 - **Returns are not annualised:** Cash-flow timing is unavailable so a loan repaid early and one repaid on schedule can show the same total return.
-- **One split give no error bars on the AUC gaps:** The model comparisons rest on a single out-of-time window; a bootstrap or a rolling-origin evaluation would quantify how stable the 3-point spread is.
+- **One split gives no error bars on the AUC gaps:** The model comparisons rest on a single out-of-time window; a bootstrap or a rolling-origin evaluation would quantify how stable the 3-point spread is.
 - **State features are retained for analysis but would face fair-lending scrutiny** in a production setting as would any geography-conditional-on-credit effect.
 - **Thin cells in the tail:** Grade G holds 369 loans; conclusions about F and G are reported with their confidence intervals and should not be depended on.
 - **Naive standard errors:** Loans within a grade or vintage share exposure so the reported intervals treat observations as more independent than they are.
